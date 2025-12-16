@@ -1,2 +1,2 @@
 # notes-on-closures-on-a-js-file
-Some kind of cheatsheet on a JavaScript file, to collect interesting stuff about closures I may need to remember.
+Some kind of cheatsheet on a JavaScript file, to collect interesting stuff about closures I may need to remember...
