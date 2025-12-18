@@ -9,6 +9,8 @@
  *
  */
 
+// :TODO: ADD YOUTUBE AND BOOK REFERENCES
+
 /**
    Create a closure by returning a function
  */
@@ -206,7 +208,7 @@ apiFunction2('https://jsonplaceholder.typicode.com/todos/2');
 console.log('This is after the apiFunction2 call...');
 
 /**
- * this two examples shows the difference between using let and var
+ * this two examples show the difference between using let and var
  * using let, i is block scoped and a closure is created and the sequence
  * 1, 2, 3 is logged as expected
  */
