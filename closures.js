@@ -168,3 +168,34 @@ function asyncExample3() {
 asyncExample3();
 
 async3 = 'And, after 20 seconds, I am the new contents of async3';
+
+/**
+ * this is an example using an actual asynchronous operation (fetch)
+ */
+
+function apiFunction1(url) {
+  fetch(url).then(res => console.log(res));
+}
+
+apiFunction1('https://jsonplaceholder.typicode.com/todos/1');
+
+console.log('This is after the apiFunction1 call...');
+
+/**
+ * by refactoring the previous code, iti is posible to log the closure
+ */
+
+function apiFunction2(url) {
+  function handleResponse() {
+    console.log(url);
+  }
+  fetch(url).then(handleResponse);
+  console.log(
+    'In the console, you can find the closure scope holding the url here:'
+  );
+  console.dir(handleResponse);
+}
+
+apiFunction2('https://jsonplaceholder.typicode.com/todos/2');
+
+console.log('This is after the apiFunction2 call...');
