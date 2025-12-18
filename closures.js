@@ -1,7 +1,12 @@
 /**
  * EXAMPLES OF CLOSURES SHOWING THAT, ALTHOUGH A CLOSURE IS NOT FORMALLY CREATED WHEN
  * USING OTHER ENTITIES, LIKE AN OBJECT AND AN ARRAY, THE CONTEXT SCOPES ARE STILL
- * RETAINED.
+ * RETAINED
+ *
+ * Running these examples all at once are they are in this file will make things
+ * confusing. It is recommended to run each example separately so that the effects
+ * of each are easily understood
+ *
  */
 
 /**
