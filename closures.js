@@ -1,15 +1,25 @@
 /**
- * EXAMPLES OF CLOSURES SHOWING THAT, ALTHOUGH A CLOSURE IS NOT FORMALLY CREATED WHEN
- * USING OTHER ENTITIES, LIKE AN OBJECT AND AN ARRAY, THE CONTEXT SCOPES ARE STILL
- * RETAINED
+ * EXAMPLES OF CLOSURES
  *
  * Running these examples all at once are they are in this file will make things
  * confusing. It is recommended to run each example separately so that the effects
  * of each are easily understood
  *
+ * Most of these examples and the definition of closure below were taken from
+ * this reference, which is the bestvideo-explanation I have found online:
+ *    Master JavaScript Closures - Finally Understand How They Work
+ *    logicBase Labs
+ *    https://youtu.be/JVT_d9Qx_ro
  */
 
-// :TODO: ADD YOUTUBE AND BOOK REFERENCES
+/**
+ * Definition of Closure
+ *
+ * A closure is a mechanism where a function remembers variables outside
+ * its own scope and can access them whenever needed.
+ * In other words, values that aren't inside the function itself, but for
+ * which the function takes a reference from its parent or outer scope.
+ */
 
 /**
    Create a closure by returning a function
@@ -38,6 +48,17 @@ newFunction1(
 );
 console.dir(newFunction1); // go to the console, expand the function, then the scopes, and then the closure and the global scope, once in there, find: aGlobalVariable
 console.log('');
+
+/**
+ * THE FOLLOWING TWO EXAMPLES SHOW AN INTERESTING FACT.
+ * ALTHOUGH A CLOSURE IS NOT FORMALLY CREATED WHEN USING OTHER ENTITIES
+ * LIKE AN OBJECT AND AN ARRAY, THE CONTEXT SCOPES ARE STILL
+ * RETAINED.
+ *
+ * Since this is something I discovered myself by accident, I have no
+ * formal name for these, so I am calling them here "informal closures".
+ * I will update this naming whenever I find a proper reference.
+ */
 
 /**
  * Create an "informal closure" (my words) by returning an object
@@ -216,7 +237,7 @@ console.log('This is after the apiFunction2 call...');
 for (let i = 0; i < 3; i++) {
   function callBack() {
     console.log(i);
-    console.log('* * *');
+    console.log('# # #');
   }
   setTimeout(callBack, 1000 * i);
   console.dir(callBack);
@@ -239,6 +260,25 @@ for (var i = 0; i < 3; i++) {
   setTimeout(callBack, 1000 * i);
   console.dir(callBack);
   console.log('- - -');
+}
+
+console.log('After loop');
+
+/**
+ * finally, this third example shows how to enable a closure even if var is used
+ * with the help of an iife
+ */
+
+for (var i = 0; i < 3; i++) {
+  (function (i) {
+    function callBack() {
+      console.log(i);
+      console.log('$ $ $');
+    }
+    setTimeout(callBack, 1000 * i);
+    console.dir(callBack);
+    console.log('- - -');
+  })(i);
 }
 
 console.log('After loop');
