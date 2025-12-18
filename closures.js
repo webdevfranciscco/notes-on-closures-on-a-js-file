@@ -117,7 +117,8 @@ console.log('');
 console.log('');
 
 /**
- * a couple of asynchronous closures
+ * a couple of asynchronous closures, this one sets the timer inside the anonymous
+ * function used as an argument to the setTimeout call...
  */
 
 function asyncExample1() {
@@ -131,10 +132,8 @@ function asyncExample1() {
 
 asyncExample1();
 
-console.log('');
-
 /**
- * x
+ * ... this other example, on the other hand, defines a named function and passes it as an argumnt to the setTimeout call.
  */
 
 function asyncExample2() {
@@ -148,3 +147,24 @@ function asyncExample2() {
 }
 
 asyncExample2();
+
+/**
+ * ... then on this one, we pull the variable before the outer function into the global
+ * scope and then change its value after we call asyncExample3, what will be the value
+ * of async3 logged to the console?
+ */
+
+let async3 = "The 20 seconds are up! I am the contents of variable 'async3'.";
+
+function asyncExample3() {
+  console.log('Counting 20 seconds...');
+  function callbackFunction3() {
+    console.log(async3);
+    console.dir(callbackFunction3); // after 5 seconds,  check this output on the console and find the closure
+  }
+  setTimeout(callbackFunction3, 20000);
+}
+
+asyncExample3();
+
+async3 = 'And, after 20 seconds, I am the new contents of async3';
