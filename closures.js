@@ -199,3 +199,39 @@ function apiFunction2(url) {
 apiFunction2('https://jsonplaceholder.typicode.com/todos/2');
 
 console.log('This is after the apiFunction2 call...');
+
+/**
+ * this two examples shows the difference between using let and var
+ * using let, i is block scoped and a closure is created and the sequence
+ * 1, 2, 3 is logged as expected
+ */
+
+for (let i = 0; i < 3; i++) {
+  function callBack() {
+    console.log(i);
+    console.log('* * *');
+  }
+  setTimeout(callBack, 1000 * i);
+  console.dir(callBack);
+  console.log('- - -');
+}
+
+console.log('After loop');
+
+/**
+ * ... but using var, i is globally scoped and a closure is NOT created
+ * since now i is available in the global scope, callBac() does not need
+ * to create a closure and the oputput is 3 all three times
+ */
+
+for (var i = 0; i < 3; i++) {
+  function callBack() {
+    console.log(i);
+    console.log('* * *');
+  }
+  setTimeout(callBack, 1000 * i);
+  console.dir(callBack);
+  console.log('- - -');
+}
+
+console.log('After loop');
